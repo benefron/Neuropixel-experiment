@@ -77,7 +77,6 @@ void setup() {
    linnear.rotate(-36000);
    
    linnear.disable();
-   catch_dis = 10 * 360;   
 
 }
 
@@ -119,6 +118,10 @@ void loop() {
           stepper.move(rot);
           stepperAngle = 0;
         }
+        else
+        {
+          ch = Serial.read();
+        }
       
       }
     
@@ -154,13 +157,6 @@ void loop() {
           stepperAngle = al_1*MICROSTEPS;
           Serial.println("aluminum");
           
-
-          delay(100);
-          digitalWrite(R_OBJ,HIGH);
-          delay(100);
-          digitalWrite(R_ALUM,HIGH);
-          delay(100);
-          digitalWrite(ALUM,LOW);
         }
     
     
@@ -173,12 +169,7 @@ void loop() {
           stepperAngle = at_1*MICROSTEPS;
           Serial.println("aluminum silenced");
           delay(100);
-          digitalWrite(R_OBJ,HIGH);
-          delay(100);
-          digitalWrite(R_MUT,HIGH);
-          delay(100);
-          digitalWrite(ATT,LOW);
-         
+
           
         }
     
@@ -193,15 +184,7 @@ void loop() {
           stepper.move(no_1*MICROSTEPS);   
           stepperAngle = no_1*MICROSTEPS;
           Serial.println("non");
-          delay(100);
-          digitalWrite(R_OBJ,HIGH);
-          delay(100);
-          digitalWrite(R_NON,HIGH);
-          delay(100);
-          digitalWrite(NON,LOW);
-        
-         
-          
+
           
         }
         if (ch == 'o')
@@ -212,13 +195,9 @@ void loop() {
           delay(100);
           stepper.move(obj_4*MICROSTEPS);   
           stepperAngle = obj_4*MICROSTEPS;
-          Serial.println("obj_4");
+          Serial.println("obj4");
           delay(100);
-          digitalWrite(R_OBJ,HIGH);
-          delay(100);
-          digitalWrite(Obj4,HIGH);
-          delay(100);
-          digitalWrite(NON,LOW);
+          
 
         }
         if (digitalRead(LFWD) == HIGH || ch == 'f')
@@ -228,10 +207,8 @@ void loop() {
 			linnear.rotate(whiskPos);
       delay(50);
 			linnear.disable();
-      Serial.println("motor moved");
-      delay(100);
-			digitalWrite(L_ST,HIGH);
-			delay(100);
+      Serial.println("at Whiskers");
+      
 			
 		}
 
@@ -258,7 +235,7 @@ void advancemotor() {
   
   linnear.startBrake();
   linnear.rotate(180);
-  Serial.println("stopped");
+  Serial.println("reset");
   delay(20);
 	digitalWrite(R_reset,HIGH);
 	delay(20);
