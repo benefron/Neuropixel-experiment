@@ -160,7 +160,7 @@ void loop() {
         }
     
     
-        if (ch == 'm'|| digitalRead(ATT) == HIGH)
+        if (ch == 'm'|| ch == 's')
         {
 
           stepper.move(-stepperAngle);
@@ -175,7 +175,7 @@ void loop() {
     
     
     
-        if (ch == 'n' || digitalRead(NON) == HIGH)
+        if (ch == 'n' || ch == 'e')
         {
             
          
