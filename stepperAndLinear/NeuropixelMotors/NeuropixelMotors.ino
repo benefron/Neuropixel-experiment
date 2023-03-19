@@ -215,6 +215,7 @@ void loop() {
     if (ch == 'b')
 		{
 			linnear.enable();
+      Serial.println("Moving back");
       
 			linnear.rotate(-36000);
       
