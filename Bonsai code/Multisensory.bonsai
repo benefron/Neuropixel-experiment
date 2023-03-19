@@ -9,6 +9,7 @@
                  xmlns:num="clr-namespace:Bonsai.Numerics;assembly=Bonsai.Numerics"
                  xmlns:p1="clr-namespace:Bonsai.Numerics.Distributions;assembly=Bonsai.Numerics"
                  xmlns:wie="clr-namespace:Bonsai.Windows.Input;assembly=Bonsai.Windows.Input"
+                 xmlns:sys="clr-namespace:System;assembly=mscorlib"
                  xmlns="https://bonsai-rx.org/2018/workflow">
   <Workflow>
     <Nodes>
@@ -2161,6 +2162,37 @@ def process(value):
             <Expression xsi:type="rx:BehaviorSubject">
               <Name>Face_Cam</Name>
             </Expression>
+            <Expression xsi:type="SubscribeSubject">
+              <Name>FileName</Name>
+            </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="StringProperty">
+                <Value>_Face.avi</Value>
+              </Combinator>
+            </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="rx:Zip" />
+            </Expression>
+            <Expression xsi:type="Add" />
+            <Expression xsi:type="PropertyMapping">
+              <PropertyMappings>
+                <Property Name="FileName" />
+              </PropertyMappings>
+            </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="cv:VideoWriter">
+                <cv:Suffix>FileCount</cv:Suffix>
+                <cv:Buffered>true</cv:Buffered>
+                <cv:Overwrite>false</cv:Overwrite>
+                <cv:FourCC>FMP4</cv:FourCC>
+                <cv:FrameRate>100</cv:FrameRate>
+                <cv:FrameSize>
+                  <cv:Width>0</cv:Width>
+                  <cv:Height>0</cv:Height>
+                </cv:FrameSize>
+                <cv:ResizeInterpolation>NearestNeighbor</cv:ResizeInterpolation>
+              </Combinator>
+            </Expression>
             <Expression xsi:type="WorkflowOutput" />
           </Nodes>
           <Edges>
@@ -2175,7 +2207,13 @@ def process(value):
             <Edge From="8" To="9" Label="Source2" />
             <Edge From="9" To="10" Label="Source1" />
             <Edge From="10" To="11" Label="Source1" />
-            <Edge From="11" To="12" Label="Source1" />
+            <Edge From="11" To="17" Label="Source1" />
+            <Edge From="12" To="14" Label="Source1" />
+            <Edge From="13" To="14" Label="Source2" />
+            <Edge From="14" To="15" Label="Source1" />
+            <Edge From="15" To="16" Label="Source1" />
+            <Edge From="16" To="17" Label="Source2" />
+            <Edge From="17" To="18" Label="Source1" />
           </Edges>
         </Workflow>
       </Expression>
@@ -2189,7 +2227,7 @@ def process(value):
                 <cv:CaptureProperties>
                   <cv:CapturePropertyAssignment>
                     <cv:Property>Fps</cv:Property>
-                    <cv:Value>100</cv:Value>
+                    <cv:Value>400</cv:Value>
                   </cv:CapturePropertyAssignment>
                 </cv:CaptureProperties>
               </Combinator>
@@ -2201,6 +2239,18 @@ def process(value):
               </Combinator>
             </Expression>
             <Expression xsi:type="Combinator">
+              <Combinator xsi:type="wie:KeyDown">
+                <wie:Filter>F4</wie:Filter>
+                <wie:SuppressRepetitions>false</wie:SuppressRepetitions>
+              </Combinator>
+            </Expression>
+            <Expression xsi:type="SubscribeSubject">
+              <Name>Start Recording</Name>
+            </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="rx:Merge" />
+            </Expression>
+            <Expression xsi:type="Combinator">
               <Combinator xsi:type="rx:Delay">
                 <rx:DueTime>PT1S</rx:DueTime>
               </Combinator>
@@ -2208,11 +2258,11 @@ def process(value):
             <Expression xsi:type="Combinator">
               <Combinator xsi:type="rx:SubscribeWhen" />
             </Expression>
+            <Expression xsi:type="SubscribeSubject">
+              <Name>Stop Recording</Name>
+            </Expression>
             <Expression xsi:type="Combinator">
-              <Combinator xsi:type="wie:KeyDown">
-                <wie:Filter>F4</wie:Filter>
-                <wie:SuppressRepetitions>false</wie:SuppressRepetitions>
-              </Combinator>
+              <Combinator xsi:type="rx:Merge" />
             </Expression>
             <Expression xsi:type="Combinator">
               <Combinator xsi:type="rx:TakeUntil" />
@@ -2223,17 +2273,58 @@ def process(value):
             <Expression xsi:type="rx:BehaviorSubject">
               <Name>Whisker_Cam</Name>
             </Expression>
+            <Expression xsi:type="SubscribeSubject">
+              <Name>FileName</Name>
+            </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="StringProperty">
+                <Value>_Whiskers.avi</Value>
+              </Combinator>
+            </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="rx:Zip" />
+            </Expression>
+            <Expression xsi:type="Add" />
+            <Expression xsi:type="PropertyMapping">
+              <PropertyMappings>
+                <Property Name="FileName" />
+              </PropertyMappings>
+            </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="cv:VideoWriter">
+                <cv:Suffix>FileCount</cv:Suffix>
+                <cv:Buffered>true</cv:Buffered>
+                <cv:Overwrite>false</cv:Overwrite>
+                <cv:FourCC>FMP4</cv:FourCC>
+                <cv:FrameRate>400</cv:FrameRate>
+                <cv:FrameSize>
+                  <cv:Width>0</cv:Width>
+                  <cv:Height>0</cv:Height>
+                </cv:FrameSize>
+                <cv:ResizeInterpolation>NearestNeighbor</cv:ResizeInterpolation>
+              </Combinator>
+            </Expression>
             <Expression xsi:type="WorkflowOutput" />
           </Nodes>
           <Edges>
-            <Edge From="0" To="3" Label="Source1" />
-            <Edge From="1" To="2" Label="Source1" />
-            <Edge From="2" To="3" Label="Source2" />
-            <Edge From="3" To="5" Label="Source1" />
-            <Edge From="4" To="5" Label="Source2" />
-            <Edge From="5" To="6" Label="Source1" />
-            <Edge From="6" To="7" Label="Source1" />
-            <Edge From="7" To="8" Label="Source1" />
+            <Edge From="0" To="6" Label="Source1" />
+            <Edge From="1" To="4" Label="Source1" />
+            <Edge From="2" To="8" Label="Source1" />
+            <Edge From="3" To="4" Label="Source2" />
+            <Edge From="4" To="5" Label="Source1" />
+            <Edge From="5" To="6" Label="Source2" />
+            <Edge From="6" To="9" Label="Source1" />
+            <Edge From="7" To="8" Label="Source2" />
+            <Edge From="8" To="9" Label="Source2" />
+            <Edge From="9" To="10" Label="Source1" />
+            <Edge From="10" To="11" Label="Source1" />
+            <Edge From="11" To="17" Label="Source1" />
+            <Edge From="12" To="14" Label="Source1" />
+            <Edge From="13" To="14" Label="Source2" />
+            <Edge From="14" To="15" Label="Source1" />
+            <Edge From="15" To="16" Label="Source1" />
+            <Edge From="16" To="17" Label="Source2" />
+            <Edge From="17" To="18" Label="Source1" />
           </Edges>
         </Workflow>
       </Expression>
@@ -2246,6 +2337,9 @@ def process(value):
             </Expression>
             <Expression xsi:type="Combinator">
               <Combinator xsi:type="StringProperty" />
+            </Expression>
+            <Expression xsi:type="rx:BehaviorSubject">
+              <Name>Animal ID</Name>
             </Expression>
             <Expression xsi:type="ExternalizedMapping">
               <Property Name="Value" DisplayName="Date of Exp." />
@@ -2263,11 +2357,86 @@ def process(value):
                 <Value>2022-11-07T00:00:00</Value>
               </Combinator>
             </Expression>
+            <Expression xsi:type="SubscribeSubject">
+              <Name>Path</Name>
+            </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="rx:Zip" />
+            </Expression>
+            <Expression xsi:type="SubscribeSubject">
+              <Name>FileName</Name>
+            </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="StringProperty">
+                <Value>.csv</Value>
+              </Combinator>
+            </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="rx:Zip" />
+            </Expression>
+            <Expression xsi:type="Add" />
+            <Expression xsi:type="PropertyMapping">
+              <PropertyMappings>
+                <Property Name="FileName" />
+              </PropertyMappings>
+            </Expression>
+            <Expression xsi:type="io:CsvWriter">
+              <io:Append>false</io:Append>
+              <io:Overwrite>false</io:Overwrite>
+              <io:Suffix>None</io:Suffix>
+              <io:IncludeHeader>false</io:IncludeHeader>
+            </Expression>
+            <Expression xsi:type="ExternalizedMapping">
+              <Property Name="Value" DisplayName="Path" />
+            </Expression>
+            <Expression xsi:type="PropertySource" TypeArguments="io:EnumerateDirectories,sys:String">
+              <MemberName>Path</MemberName>
+              <Value>C:\Users\lampl\Neuropixel-experiment</Value>
+            </Expression>
+            <Expression xsi:type="rx:BehaviorSubject">
+              <Name>Path</Name>
+            </Expression>
+            <Expression xsi:type="SubscribeSubject">
+              <Name>Animal ID</Name>
+            </Expression>
+            <Expression xsi:type="SubscribeSubject">
+              <Name>Path</Name>
+            </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="StringProperty">
+                <Value>\</Value>
+              </Combinator>
+            </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="rx:Zip" />
+            </Expression>
+            <Expression xsi:type="Add" />
+            <Expression xsi:type="rx:BehaviorSubject">
+              <Name>FileName</Name>
+            </Expression>
           </Nodes>
           <Edges>
             <Edge From="0" To="1" Label="Source1" />
-            <Edge From="2" To="3" Label="Source1" />
-            <Edge From="4" To="5" Label="Source1" />
+            <Edge From="1" To="2" Label="Source1" />
+            <Edge From="2" To="8" Label="Source1" />
+            <Edge From="3" To="4" Label="Source1" />
+            <Edge From="4" To="8" Label="Source2" />
+            <Edge From="5" To="6" Label="Source1" />
+            <Edge From="6" To="8" Label="Source3" />
+            <Edge From="7" To="8" Label="Source4" />
+            <Edge From="8" To="14" Label="Source1" />
+            <Edge From="9" To="11" Label="Source1" />
+            <Edge From="10" To="11" Label="Source2" />
+            <Edge From="11" To="12" Label="Source1" />
+            <Edge From="12" To="13" Label="Source1" />
+            <Edge From="13" To="14" Label="Source2" />
+            <Edge From="15" To="16" Label="Source1" />
+            <Edge From="16" To="17" Label="Source1" />
+            <Edge From="18" To="21" Label="Source3" />
+            <Edge From="19" To="21" Label="Source1" />
+            <Edge From="20" To="21" Label="Source2" />
+            <Edge From="21" To="22" Label="Source1" />
+            <Edge From="22" To="23" Label="Source1" />
           </Edges>
         </Workflow>
       </Expression>
