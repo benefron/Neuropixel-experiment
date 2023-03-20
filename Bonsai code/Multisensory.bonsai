@@ -2830,6 +2830,13 @@ def process(value):
           </Edges>
         </Workflow>
       </Expression>
+      <Expression xsi:type="GroupWorkflow">
+        <Name>Evoked sounds</Name>
+        <Workflow>
+          <Nodes />
+          <Edges />
+        </Workflow>
+      </Expression>
     </Nodes>
     <Edges>
       <Edge From="1" To="4" Label="Source1" />
