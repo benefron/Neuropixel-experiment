@@ -2146,7 +2146,7 @@ def process(value):
           <Nodes>
             <Expression xsi:type="Combinator">
               <Combinator xsi:type="cv:CameraCapture">
-                <cv:Index>0</cv:Index>
+                <cv:Index>1</cv:Index>
                 <cv:CaptureProperties>
                   <cv:CapturePropertyAssignment>
                     <cv:Property>Fps</cv:Property>
@@ -2215,10 +2215,11 @@ def process(value):
             </Expression>
             <Expression xsi:type="Combinator">
               <Combinator xsi:type="cv:VideoWriter">
+                <cv:FileName>C:\Users\lampl\Neuropixel-experiment\_Face.avi</cv:FileName>
                 <cv:Suffix>FileCount</cv:Suffix>
                 <cv:Buffered>true</cv:Buffered>
                 <cv:Overwrite>false</cv:Overwrite>
-                <cv:FourCC>FMP4</cv:FourCC>
+                <cv:FourCC>40</cv:FourCC>
                 <cv:FrameRate>100</cv:FrameRate>
                 <cv:FrameSize>
                   <cv:Width>0</cv:Width>
@@ -2326,10 +2327,11 @@ def process(value):
             </Expression>
             <Expression xsi:type="Combinator">
               <Combinator xsi:type="cv:VideoWriter">
+                <cv:FileName>C:\Users\lampl\Neuropixel-experiment\_Whiskers.avi</cv:FileName>
                 <cv:Suffix>FileCount</cv:Suffix>
                 <cv:Buffered>true</cv:Buffered>
                 <cv:Overwrite>false</cv:Overwrite>
-                <cv:FourCC>FMP4</cv:FourCC>
+                <cv:FourCC>40</cv:FourCC>
                 <cv:FrameRate>400</cv:FrameRate>
                 <cv:FrameSize>
                   <cv:Width>0</cv:Width>
@@ -2397,6 +2399,9 @@ def process(value):
             <Expression xsi:type="Combinator">
               <Combinator xsi:type="rx:Zip" />
             </Expression>
+            <Expression xsi:type="rx:BehaviorSubject">
+              <Name>meta</Name>
+            </Expression>
             <Expression xsi:type="SubscribeSubject">
               <Name>FileName</Name>
             </Expression>
@@ -2414,9 +2419,13 @@ def process(value):
                 <Property Name="FileName" />
               </PropertyMappings>
             </Expression>
+            <Expression xsi:type="SubscribeSubject">
+              <Name>meta</Name>
+            </Expression>
             <Expression xsi:type="io:CsvWriter">
+              <io:FileName>C:\Users\lampl\Neuropixel-experiment\.csv</io:FileName>
               <io:Append>false</io:Append>
-              <io:Overwrite>false</io:Overwrite>
+              <io:Overwrite>true</io:Overwrite>
               <io:Suffix>None</io:Suffix>
               <io:IncludeHeader>false</io:IncludeHeader>
             </Expression>
@@ -2458,19 +2467,20 @@ def process(value):
             <Edge From="5" To="6" Label="Source1" />
             <Edge From="6" To="8" Label="Source3" />
             <Edge From="7" To="8" Label="Source4" />
-            <Edge From="8" To="14" Label="Source1" />
-            <Edge From="9" To="11" Label="Source1" />
-            <Edge From="10" To="11" Label="Source2" />
-            <Edge From="11" To="12" Label="Source1" />
+            <Edge From="8" To="9" Label="Source1" />
+            <Edge From="10" To="12" Label="Source1" />
+            <Edge From="11" To="12" Label="Source2" />
             <Edge From="12" To="13" Label="Source1" />
-            <Edge From="13" To="14" Label="Source2" />
-            <Edge From="15" To="16" Label="Source1" />
-            <Edge From="16" To="17" Label="Source1" />
-            <Edge From="18" To="21" Label="Source3" />
-            <Edge From="19" To="21" Label="Source1" />
-            <Edge From="20" To="21" Label="Source2" />
-            <Edge From="21" To="22" Label="Source1" />
-            <Edge From="22" To="23" Label="Source1" />
+            <Edge From="13" To="14" Label="Source1" />
+            <Edge From="14" To="16" Label="Source1" />
+            <Edge From="15" To="16" Label="Source2" />
+            <Edge From="17" To="18" Label="Source1" />
+            <Edge From="18" To="19" Label="Source1" />
+            <Edge From="20" To="23" Label="Source3" />
+            <Edge From="21" To="23" Label="Source1" />
+            <Edge From="22" To="23" Label="Source2" />
+            <Edge From="23" To="24" Label="Source1" />
+            <Edge From="24" To="25" Label="Source1" />
           </Edges>
         </Workflow>
       </Expression>
@@ -2531,7 +2541,8 @@ def process(value):
               </PropertyMappings>
             </Expression>
             <Expression xsi:type="io:CsvWriter">
-              <io:Append>false</io:Append>
+              <io:FileName>C:\Users\lampl\Neuropixel-experiment\_conditions.csv</io:FileName>
+              <io:Append>true</io:Append>
               <io:Overwrite>false</io:Overwrite>
               <io:Suffix>FileCount</io:Suffix>
               <io:IncludeHeader>false</io:IncludeHeader>
@@ -2578,7 +2589,8 @@ def process(value):
               </PropertyMappings>
             </Expression>
             <Expression xsi:type="io:CsvWriter">
-              <io:Append>false</io:Append>
+              <io:FileName>C:\Users\lampl\Neuropixel-experiment\_allEvents.csv</io:FileName>
+              <io:Append>true</io:Append>
               <io:Overwrite>false</io:Overwrite>
               <io:Suffix>FileCount</io:Suffix>
               <io:IncludeHeader>false</io:IncludeHeader>
@@ -2835,6 +2847,103 @@ def process(value):
         <Workflow>
           <Nodes />
           <Edges />
+        </Workflow>
+      </Expression>
+      <Expression xsi:type="GroupWorkflow">
+        <Name>Manual control</Name>
+        <Workflow>
+          <Nodes>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="wie:KeyDown">
+                <wie:Filter>LButton A Shift</wie:Filter>
+                <wie:SuppressRepetitions>false</wie:SuppressRepetitions>
+              </Combinator>
+            </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="StringProperty">
+                <Value>l</Value>
+              </Combinator>
+            </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="wie:KeyDown">
+                <wie:Filter>LButton MButton XButton1 Back Tab Clear Return Enter A D E H I L M Shift</wie:Filter>
+                <wie:SuppressRepetitions>false</wie:SuppressRepetitions>
+              </Combinator>
+            </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="StringProperty">
+                <Value>m</Value>
+              </Combinator>
+            </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="wie:KeyDown">
+                <wie:Filter>N</wie:Filter>
+                <wie:SuppressRepetitions>false</wie:SuppressRepetitions>
+              </Combinator>
+            </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="StringProperty">
+                <Value>n</Value>
+              </Combinator>
+            </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="wie:KeyDown">
+                <wie:Filter>RButton MButton XButton2 B D F Shift</wie:Filter>
+                <wie:SuppressRepetitions>false</wie:SuppressRepetitions>
+              </Combinator>
+            </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="StringProperty">
+                <Value>f</Value>
+              </Combinator>
+            </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="wie:KeyDown">
+                <wie:Filter>RButton ShiftKey Menu B P R Shift</wie:Filter>
+                <wie:SuppressRepetitions>false</wie:SuppressRepetitions>
+              </Combinator>
+            </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="StringProperty">
+                <Value>b</Value>
+              </Combinator>
+            </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="wie:KeyDown">
+                <wie:Filter>F4</wie:Filter>
+                <wie:SuppressRepetitions>false</wie:SuppressRepetitions>
+              </Combinator>
+            </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="StringProperty">
+                <Value>3</Value>
+              </Combinator>
+            </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="rx:Merge" />
+            </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="io:SerialStringWrite">
+                <io:PortName>COM15</io:PortName>
+                <io:NewLine>\r\n</io:NewLine>
+              </Combinator>
+            </Expression>
+          </Nodes>
+          <Edges>
+            <Edge From="0" To="1" Label="Source1" />
+            <Edge From="1" To="12" Label="Source1" />
+            <Edge From="2" To="3" Label="Source1" />
+            <Edge From="3" To="12" Label="Source2" />
+            <Edge From="4" To="5" Label="Source1" />
+            <Edge From="5" To="12" Label="Source3" />
+            <Edge From="6" To="7" Label="Source1" />
+            <Edge From="7" To="12" Label="Source4" />
+            <Edge From="8" To="9" Label="Source1" />
+            <Edge From="9" To="12" Label="Source5" />
+            <Edge From="10" To="11" Label="Source1" />
+            <Edge From="11" To="12" Label="Source6" />
+            <Edge From="12" To="13" Label="Source1" />
+          </Edges>
         </Workflow>
       </Expression>
     </Nodes>
