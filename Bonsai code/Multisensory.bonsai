@@ -2783,6 +2783,22 @@ def process(value):
                 </mx:Channels>
               </Combinator>
             </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="mx:DigitalOutput">
+                <mx:SignalSource />
+                <mx:SampleRate>10000</mx:SampleRate>
+                <mx:ActiveEdge>Rising</mx:ActiveEdge>
+                <mx:SampleMode>ContinuousSamples</mx:SampleMode>
+                <mx:BufferSize>1000</mx:BufferSize>
+                <mx:Channels>
+                  <mx:DigitalOutputChannelConfiguration>
+                    <mx:ChannelName />
+                    <mx:Grouping>OneChannelForEachLine</mx:Grouping>
+                    <mx:Lines>Dev2/port0/line0</mx:Lines>
+                  </mx:DigitalOutputChannelConfiguration>
+                </mx:Channels>
+              </Combinator>
+            </Expression>
             <Expression xsi:type="SubscribeSubject">
               <Name>endW</Name>
             </Expression>
@@ -2855,13 +2871,14 @@ def process(value):
             <Edge From="14" To="15" Label="Source1" />
             <Edge From="15" To="16" Label="Source1" />
             <Edge From="17" To="18" Label="Source1" />
-            <Edge From="19" To="21" Label="Source1" />
-            <Edge From="20" To="21" Label="Source2" />
-            <Edge From="21" To="22" Label="Source1" />
+            <Edge From="17" To="19" Label="Source1" />
+            <Edge From="20" To="22" Label="Source1" />
+            <Edge From="21" To="22" Label="Source2" />
             <Edge From="22" To="23" Label="Source1" />
-            <Edge From="24" To="26" Label="Source1" />
-            <Edge From="25" To="26" Label="Source2" />
-            <Edge From="26" To="27" Label="Source1" />
+            <Edge From="23" To="24" Label="Source1" />
+            <Edge From="25" To="27" Label="Source1" />
+            <Edge From="26" To="27" Label="Source2" />
+            <Edge From="27" To="28" Label="Source1" />
           </Edges>
         </Workflow>
       </Expression>
