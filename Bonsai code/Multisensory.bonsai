@@ -49,20 +49,20 @@
                 <cv:Regions>
                   <cv:ArrayOfPoint>
                     <cv:Point>
-                      <cv:X>488</cv:X>
-                      <cv:Y>140</cv:Y>
+                      <cv:X>28</cv:X>
+                      <cv:Y>81</cv:Y>
                     </cv:Point>
                     <cv:Point>
-                      <cv:X>198</cv:X>
-                      <cv:Y>140</cv:Y>
+                      <cv:X>131</cv:X>
+                      <cv:Y>81</cv:Y>
                     </cv:Point>
                     <cv:Point>
-                      <cv:X>198</cv:X>
-                      <cv:Y>392</cv:Y>
+                      <cv:X>131</cv:X>
+                      <cv:Y>175</cv:Y>
                     </cv:Point>
                     <cv:Point>
-                      <cv:X>488</cv:X>
-                      <cv:Y>392</cv:Y>
+                      <cv:X>28</cv:X>
+                      <cv:Y>175</cv:Y>
                     </cv:Point>
                   </cv:ArrayOfPoint>
                 </cv:Regions>
@@ -72,7 +72,7 @@
             <Expression xsi:type="Combinator">
               <Combinator xsi:type="cv:RoiActivityDetected">
                 <cv:Index>0</cv:Index>
-                <cv:Threshold>2</cv:Threshold>
+                <cv:Threshold>0.8</cv:Threshold>
               </Combinator>
             </Expression>
             <Expression xsi:type="rx:Condition">
@@ -1825,18 +1825,18 @@ def process(value):
             <Expression xsi:type="MemberSelector">
               <Selector>Image</Selector>
             </Expression>
-            <Expression xsi:type="rx:BehaviorSubject">
-              <Name>Face_Cam</Name>
-            </Expression>
             <Expression xsi:type="Combinator">
               <Combinator xsi:type="cv:Crop">
                 <cv:RegionOfInterest>
-                  <cv:X>0</cv:X>
-                  <cv:Y>0</cv:Y>
-                  <cv:Width>0</cv:Width>
-                  <cv:Height>0</cv:Height>
+                  <cv:X>125</cv:X>
+                  <cv:Y>105</cv:Y>
+                  <cv:Width>323</cv:Width>
+                  <cv:Height>281</cv:Height>
                 </cv:RegionOfInterest>
               </Combinator>
+            </Expression>
+            <Expression xsi:type="rx:BehaviorSubject">
+              <Name>Face_Cam</Name>
             </Expression>
             <Expression xsi:type="Combinator">
               <Combinator xsi:type="cv:VideoWriter">
@@ -3411,7 +3411,7 @@ def process(value):
                 <dsp:Frequency>2000</dsp:Frequency>
                 <dsp:Waveform>Sine</dsp:Waveform>
                 <dsp:SampleRate>150000</dsp:SampleRate>
-                <dsp:Amplitude>0.0613</dsp:Amplitude>
+                <dsp:Amplitude>0.12</dsp:Amplitude>
                 <dsp:Offset>0</dsp:Offset>
                 <dsp:Phase>0</dsp:Phase>
               </Combinator>
@@ -3445,7 +3445,7 @@ def process(value):
                 <dsp:Frequency>4000</dsp:Frequency>
                 <dsp:Waveform>Sine</dsp:Waveform>
                 <dsp:SampleRate>150000</dsp:SampleRate>
-                <dsp:Amplitude>0.0442</dsp:Amplitude>
+                <dsp:Amplitude>0.02</dsp:Amplitude>
                 <dsp:Offset>0</dsp:Offset>
                 <dsp:Phase>0</dsp:Phase>
               </Combinator>
@@ -3479,7 +3479,7 @@ def process(value):
                 <dsp:Frequency>8000</dsp:Frequency>
                 <dsp:Waveform>Sine</dsp:Waveform>
                 <dsp:SampleRate>150000</dsp:SampleRate>
-                <dsp:Amplitude>0.029</dsp:Amplitude>
+                <dsp:Amplitude>0.02</dsp:Amplitude>
                 <dsp:Offset>0</dsp:Offset>
                 <dsp:Phase>0</dsp:Phase>
               </Combinator>
@@ -3513,7 +3513,7 @@ def process(value):
                 <dsp:Frequency>16000</dsp:Frequency>
                 <dsp:Waveform>Sine</dsp:Waveform>
                 <dsp:SampleRate>150000</dsp:SampleRate>
-                <dsp:Amplitude>0.0041</dsp:Amplitude>
+                <dsp:Amplitude>0.0115</dsp:Amplitude>
                 <dsp:Offset>0</dsp:Offset>
                 <dsp:Phase>0</dsp:Phase>
               </Combinator>
@@ -3547,7 +3547,7 @@ def process(value):
                 <dsp:Frequency>32000</dsp:Frequency>
                 <dsp:Waveform>Sine</dsp:Waveform>
                 <dsp:SampleRate>150000</dsp:SampleRate>
-                <dsp:Amplitude>0.025</dsp:Amplitude>
+                <dsp:Amplitude>0.115</dsp:Amplitude>
                 <dsp:Offset>0</dsp:Offset>
                 <dsp:Phase>0</dsp:Phase>
               </Combinator>
@@ -3581,7 +3581,7 @@ def process(value):
                 <dsp:Frequency>64000</dsp:Frequency>
                 <dsp:Waveform>Sine</dsp:Waveform>
                 <dsp:SampleRate>150000</dsp:SampleRate>
-                <dsp:Amplitude>0.348</dsp:Amplitude>
+                <dsp:Amplitude>1.12</dsp:Amplitude>
                 <dsp:Offset>0</dsp:Offset>
                 <dsp:Phase>0</dsp:Phase>
               </Combinator>
@@ -3710,7 +3710,7 @@ def process(value):
             <Expression xsi:type="Combinator">
               <Combinator xsi:type="dsp:ConvertScale">
                 <dsp:Depth>F32</dsp:Depth>
-                <dsp:Scale>0.04</dsp:Scale>
+                <dsp:Scale>0.08</dsp:Scale>
                 <dsp:Shift>0</dsp:Shift>
               </Combinator>
             </Expression>
