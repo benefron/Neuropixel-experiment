@@ -4,8 +4,8 @@
                  xmlns:cv="clr-namespace:Bonsai.Vision;assembly=Bonsai.Vision"
                  xmlns:rx="clr-namespace:Bonsai.Reactive;assembly=Bonsai.Core"
                  xmlns:dsp="clr-namespace:Bonsai.Dsp;assembly=Bonsai.Dsp"
-                 xmlns:ipy="clr-namespace:Bonsai.Scripting.IronPython;assembly=Bonsai.Scripting.IronPython"
                  xmlns:io="clr-namespace:Bonsai.IO;assembly=Bonsai.System"
+                 xmlns:ipy="clr-namespace:Bonsai.Scripting.IronPython;assembly=Bonsai.Scripting.IronPython"
                  xmlns:num="clr-namespace:Bonsai.Numerics;assembly=Bonsai.Numerics"
                  xmlns:p1="clr-namespace:Bonsai.Numerics.Distributions;assembly=Bonsai.Numerics"
                  xmlns:wie="clr-namespace:Bonsai.Windows.Input;assembly=Bonsai.Windows.Input"
@@ -318,6 +318,17 @@
               <Combinator xsi:type="rx:NewThreadScheduler" />
             </Expression>
             <Expression xsi:type="Combinator">
+              <Combinator xsi:type="StringProperty">
+                <Value>o</Value>
+              </Combinator>
+            </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="io:SerialStringWrite">
+                <io:PortName>COM15</io:PortName>
+                <io:NewLine>\r\n</io:NewLine>
+              </Combinator>
+            </Expression>
+            <Expression xsi:type="Combinator">
               <Combinator xsi:type="rx:Delay">
                 <rx:DueTime>PT1S</rx:DueTime>
               </Combinator>
@@ -359,12 +370,12 @@
           <Edges>
             <Edge From="0" To="1" Label="Source1" />
             <Edge From="1" To="2" Label="Source1" />
-            <Edge From="2" To="19" Label="Source2" />
+            <Edge From="2" To="21" Label="Source2" />
             <Edge From="3" To="4" Label="Source1" />
-            <Edge From="4" To="13" Label="Source2" />
+            <Edge From="4" To="15" Label="Source2" />
             <Edge From="5" To="6" Label="Source1" />
             <Edge From="6" To="7" Label="Source1" />
-            <Edge From="7" To="14" Label="Source2" />
+            <Edge From="7" To="16" Label="Source2" />
             <Edge From="8" To="9" Label="Source1" />
             <Edge From="9" To="10" Label="Source1" />
             <Edge From="10" To="11" Label="Source1" />
@@ -377,6 +388,8 @@
             <Edge From="17" To="18" Label="Source1" />
             <Edge From="18" To="19" Label="Source1" />
             <Edge From="19" To="20" Label="Source1" />
+            <Edge From="20" To="21" Label="Source1" />
+            <Edge From="21" To="22" Label="Source1" />
           </Edges>
         </Workflow>
       </Expression>
@@ -448,6 +461,17 @@
               <Combinator xsi:type="rx:NewThreadScheduler" />
             </Expression>
             <Expression xsi:type="Combinator">
+              <Combinator xsi:type="StringProperty">
+                <Value>o</Value>
+              </Combinator>
+            </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="io:SerialStringWrite">
+                <io:PortName>COM15</io:PortName>
+                <io:NewLine>\r\n</io:NewLine>
+              </Combinator>
+            </Expression>
+            <Expression xsi:type="Combinator">
               <Combinator xsi:type="rx:Delay">
                 <rx:DueTime>PT1S</rx:DueTime>
               </Combinator>
@@ -489,12 +513,12 @@
           <Edges>
             <Edge From="0" To="1" Label="Source1" />
             <Edge From="1" To="2" Label="Source1" />
-            <Edge From="2" To="19" Label="Source2" />
+            <Edge From="2" To="21" Label="Source2" />
             <Edge From="3" To="4" Label="Source1" />
             <Edge From="4" To="5" Label="Source1" />
-            <Edge From="5" To="14" Label="Source2" />
+            <Edge From="5" To="16" Label="Source2" />
             <Edge From="6" To="7" Label="Source1" />
-            <Edge From="7" To="13" Label="Source2" />
+            <Edge From="7" To="15" Label="Source2" />
             <Edge From="8" To="9" Label="Source1" />
             <Edge From="9" To="10" Label="Source1" />
             <Edge From="10" To="11" Label="Source1" />
@@ -507,6 +531,8 @@
             <Edge From="17" To="18" Label="Source1" />
             <Edge From="18" To="19" Label="Source1" />
             <Edge From="19" To="20" Label="Source1" />
+            <Edge From="20" To="21" Label="Source1" />
+            <Edge From="21" To="22" Label="Source1" />
           </Edges>
         </Workflow>
       </Expression>
@@ -625,11 +651,11 @@ def process(value):
                   <Expression xsi:type="Combinator">
                     <Combinator xsi:type="p1:CreateCategorical">
                       <p1:ProbabilityMass>
-                        <p1:double>10</p1:double>
                         <p1:double>1</p1:double>
                         <p1:double>1</p1:double>
                         <p1:double>1</p1:double>
-                        <p1:double>10</p1:double>
+                        <p1:double>1</p1:double>
+                        <p1:double>1</p1:double>
                       </p1:ProbabilityMass>
                     </Combinator>
                   </Expression>
@@ -1242,11 +1268,11 @@ def process(value):
                   <Expression xsi:type="Combinator">
                     <Combinator xsi:type="p1:CreateCategorical">
                       <p1:ProbabilityMass>
-                        <p1:double>10</p1:double>
                         <p1:double>1</p1:double>
                         <p1:double>1</p1:double>
                         <p1:double>1</p1:double>
-                        <p1:double>10</p1:double>
+                        <p1:double>1</p1:double>
+                        <p1:double>1</p1:double>
                       </p1:ProbabilityMass>
                     </Combinator>
                   </Expression>
@@ -2507,6 +2533,17 @@ def process(value):
                 <io:NewLine>\r\n</io:NewLine>
               </Combinator>
             </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="StringProperty">
+                <Value>o</Value>
+              </Combinator>
+            </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="io:SerialStringWrite">
+                <io:PortName>COM15</io:PortName>
+                <io:NewLine>\r\n</io:NewLine>
+              </Combinator>
+            </Expression>
           </Nodes>
           <Edges>
             <Edge From="0" To="3" Label="Source1" />
@@ -2515,6 +2552,8 @@ def process(value):
             <Edge From="2" To="3" Label="Source2" />
             <Edge From="3" To="4" Label="Source1" />
             <Edge From="5" To="6" Label="Source1" />
+            <Edge From="6" To="7" Label="Source1" />
+            <Edge From="7" To="8" Label="Source1" />
           </Edges>
         </Workflow>
       </Expression>
@@ -3081,6 +3120,17 @@ def process(value):
                     <Combinator xsi:type="rx:NewThreadScheduler" />
                   </Expression>
                   <Expression xsi:type="Combinator">
+                    <Combinator xsi:type="StringProperty">
+                      <Value>o</Value>
+                    </Combinator>
+                  </Expression>
+                  <Expression xsi:type="Combinator">
+                    <Combinator xsi:type="io:SerialStringWrite">
+                      <io:PortName>COM15</io:PortName>
+                      <io:NewLine>\r\n</io:NewLine>
+                    </Combinator>
+                  </Expression>
+                  <Expression xsi:type="Combinator">
                     <Combinator xsi:type="rx:Delay">
                       <rx:DueTime>PT1S</rx:DueTime>
                     </Combinator>
@@ -3122,12 +3172,12 @@ def process(value):
                 <Edges>
                   <Edge From="0" To="1" Label="Source1" />
                   <Edge From="1" To="2" Label="Source1" />
-                  <Edge From="2" To="19" Label="Source2" />
+                  <Edge From="2" To="21" Label="Source2" />
                   <Edge From="3" To="4" Label="Source1" />
-                  <Edge From="4" To="13" Label="Source2" />
+                  <Edge From="4" To="15" Label="Source2" />
                   <Edge From="5" To="6" Label="Source1" />
                   <Edge From="6" To="7" Label="Source1" />
-                  <Edge From="7" To="14" Label="Source2" />
+                  <Edge From="7" To="16" Label="Source2" />
                   <Edge From="8" To="9" Label="Source1" />
                   <Edge From="9" To="10" Label="Source1" />
                   <Edge From="10" To="11" Label="Source1" />
@@ -3140,6 +3190,8 @@ def process(value):
                   <Edge From="17" To="18" Label="Source1" />
                   <Edge From="18" To="19" Label="Source1" />
                   <Edge From="19" To="20" Label="Source1" />
+                  <Edge From="20" To="21" Label="Source1" />
+                  <Edge From="21" To="22" Label="Source1" />
                 </Edges>
               </Workflow>
             </Expression>
@@ -3216,6 +3268,17 @@ def process(value):
                     <Combinator xsi:type="rx:NewThreadScheduler" />
                   </Expression>
                   <Expression xsi:type="Combinator">
+                    <Combinator xsi:type="StringProperty">
+                      <Value>o</Value>
+                    </Combinator>
+                  </Expression>
+                  <Expression xsi:type="Combinator">
+                    <Combinator xsi:type="io:SerialStringWrite">
+                      <io:PortName>COM15</io:PortName>
+                      <io:NewLine>\r\n</io:NewLine>
+                    </Combinator>
+                  </Expression>
+                  <Expression xsi:type="Combinator">
                     <Combinator xsi:type="rx:Delay">
                       <rx:DueTime>PT1S</rx:DueTime>
                     </Combinator>
@@ -3257,12 +3320,12 @@ def process(value):
                 <Edges>
                   <Edge From="0" To="1" Label="Source1" />
                   <Edge From="1" To="2" Label="Source1" />
-                  <Edge From="2" To="19" Label="Source2" />
+                  <Edge From="2" To="21" Label="Source2" />
                   <Edge From="3" To="4" Label="Source1" />
                   <Edge From="4" To="5" Label="Source1" />
-                  <Edge From="5" To="14" Label="Source2" />
+                  <Edge From="5" To="16" Label="Source2" />
                   <Edge From="6" To="7" Label="Source1" />
-                  <Edge From="7" To="13" Label="Source2" />
+                  <Edge From="7" To="15" Label="Source2" />
                   <Edge From="8" To="9" Label="Source1" />
                   <Edge From="9" To="10" Label="Source1" />
                   <Edge From="10" To="11" Label="Source1" />
@@ -3275,6 +3338,8 @@ def process(value):
                   <Edge From="17" To="18" Label="Source1" />
                   <Edge From="18" To="19" Label="Source1" />
                   <Edge From="19" To="20" Label="Source1" />
+                  <Edge From="20" To="21" Label="Source1" />
+                  <Edge From="21" To="22" Label="Source1" />
                 </Edges>
               </Workflow>
             </Expression>
@@ -3364,6 +3429,9 @@ def process(value):
       <Expression xsi:type="Combinator">
         <Combinator xsi:type="rx:Merge" />
       </Expression>
+      <Expression xsi:type="MulticastSubject">
+        <Name>stopSound</Name>
+      </Expression>
       <Expression xsi:type="rx:SelectMany">
         <Name>Evoked_aud</Name>
         <Workflow>
@@ -3373,10 +3441,10 @@ def process(value):
             </Expression>
             <Expression xsi:type="Combinator">
               <Combinator xsi:type="dsp:FunctionGenerator">
-                <dsp:BufferLength>150000</dsp:BufferLength>
+                <dsp:BufferLength>60000</dsp:BufferLength>
                 <dsp:Frequency>100</dsp:Frequency>
                 <dsp:Waveform>Sine</dsp:Waveform>
-                <dsp:SampleRate>150000</dsp:SampleRate>
+                <dsp:SampleRate>250000</dsp:SampleRate>
                 <dsp:Amplitude>0.008</dsp:Amplitude>
                 <dsp:Offset>0</dsp:Offset>
                 <dsp:Phase>0</dsp:Phase>
@@ -3385,10 +3453,10 @@ def process(value):
             <Expression xsi:type="Combinator">
               <Combinator xsi:type="mx:AnalogOutput">
                 <mx:SignalSource />
-                <mx:SampleRate>150000</mx:SampleRate>
+                <mx:SampleRate>250000</mx:SampleRate>
                 <mx:ActiveEdge>Rising</mx:ActiveEdge>
                 <mx:SampleMode>FiniteSamples</mx:SampleMode>
-                <mx:BufferSize>3750</mx:BufferSize>
+                <mx:BufferSize>7500</mx:BufferSize>
                 <mx:Channels>
                   <mx:AnalogOutputChannelConfiguration>
                     <mx:ChannelName />
@@ -3407,10 +3475,10 @@ def process(value):
             </Expression>
             <Expression xsi:type="Combinator">
               <Combinator xsi:type="dsp:FunctionGenerator">
-                <dsp:BufferLength>150000</dsp:BufferLength>
+                <dsp:BufferLength>60000</dsp:BufferLength>
                 <dsp:Frequency>2000</dsp:Frequency>
                 <dsp:Waveform>Sine</dsp:Waveform>
-                <dsp:SampleRate>150000</dsp:SampleRate>
+                <dsp:SampleRate>250000</dsp:SampleRate>
                 <dsp:Amplitude>0.12</dsp:Amplitude>
                 <dsp:Offset>0</dsp:Offset>
                 <dsp:Phase>0</dsp:Phase>
@@ -3419,10 +3487,10 @@ def process(value):
             <Expression xsi:type="Combinator">
               <Combinator xsi:type="mx:AnalogOutput">
                 <mx:SignalSource />
-                <mx:SampleRate>150000</mx:SampleRate>
+                <mx:SampleRate>250000</mx:SampleRate>
                 <mx:ActiveEdge>Rising</mx:ActiveEdge>
                 <mx:SampleMode>FiniteSamples</mx:SampleMode>
-                <mx:BufferSize>7500</mx:BufferSize>
+                <mx:BufferSize>15000</mx:BufferSize>
                 <mx:Channels>
                   <mx:AnalogOutputChannelConfiguration>
                     <mx:ChannelName />
@@ -3441,10 +3509,10 @@ def process(value):
             </Expression>
             <Expression xsi:type="Combinator">
               <Combinator xsi:type="dsp:FunctionGenerator">
-                <dsp:BufferLength>30000</dsp:BufferLength>
+                <dsp:BufferLength>60000</dsp:BufferLength>
                 <dsp:Frequency>4000</dsp:Frequency>
                 <dsp:Waveform>Sine</dsp:Waveform>
-                <dsp:SampleRate>150000</dsp:SampleRate>
+                <dsp:SampleRate>250000</dsp:SampleRate>
                 <dsp:Amplitude>0.02</dsp:Amplitude>
                 <dsp:Offset>0</dsp:Offset>
                 <dsp:Phase>0</dsp:Phase>
@@ -3453,10 +3521,10 @@ def process(value):
             <Expression xsi:type="Combinator">
               <Combinator xsi:type="mx:AnalogOutput">
                 <mx:SignalSource />
-                <mx:SampleRate>150000</mx:SampleRate>
+                <mx:SampleRate>250000</mx:SampleRate>
                 <mx:ActiveEdge>Rising</mx:ActiveEdge>
                 <mx:SampleMode>FiniteSamples</mx:SampleMode>
-                <mx:BufferSize>7500</mx:BufferSize>
+                <mx:BufferSize>15000</mx:BufferSize>
                 <mx:Channels>
                   <mx:AnalogOutputChannelConfiguration>
                     <mx:ChannelName />
@@ -3475,10 +3543,10 @@ def process(value):
             </Expression>
             <Expression xsi:type="Combinator">
               <Combinator xsi:type="dsp:FunctionGenerator">
-                <dsp:BufferLength>30000</dsp:BufferLength>
+                <dsp:BufferLength>60000</dsp:BufferLength>
                 <dsp:Frequency>8000</dsp:Frequency>
                 <dsp:Waveform>Sine</dsp:Waveform>
-                <dsp:SampleRate>150000</dsp:SampleRate>
+                <dsp:SampleRate>250000</dsp:SampleRate>
                 <dsp:Amplitude>0.02</dsp:Amplitude>
                 <dsp:Offset>0</dsp:Offset>
                 <dsp:Phase>0</dsp:Phase>
@@ -3487,10 +3555,10 @@ def process(value):
             <Expression xsi:type="Combinator">
               <Combinator xsi:type="mx:AnalogOutput">
                 <mx:SignalSource />
-                <mx:SampleRate>150000</mx:SampleRate>
+                <mx:SampleRate>250000</mx:SampleRate>
                 <mx:ActiveEdge>Rising</mx:ActiveEdge>
                 <mx:SampleMode>FiniteSamples</mx:SampleMode>
-                <mx:BufferSize>7500</mx:BufferSize>
+                <mx:BufferSize>15000</mx:BufferSize>
                 <mx:Channels>
                   <mx:AnalogOutputChannelConfiguration>
                     <mx:ChannelName />
@@ -3509,10 +3577,10 @@ def process(value):
             </Expression>
             <Expression xsi:type="Combinator">
               <Combinator xsi:type="dsp:FunctionGenerator">
-                <dsp:BufferLength>30000</dsp:BufferLength>
+                <dsp:BufferLength>60000</dsp:BufferLength>
                 <dsp:Frequency>16000</dsp:Frequency>
                 <dsp:Waveform>Sine</dsp:Waveform>
-                <dsp:SampleRate>150000</dsp:SampleRate>
+                <dsp:SampleRate>250000</dsp:SampleRate>
                 <dsp:Amplitude>0.0115</dsp:Amplitude>
                 <dsp:Offset>0</dsp:Offset>
                 <dsp:Phase>0</dsp:Phase>
@@ -3521,10 +3589,10 @@ def process(value):
             <Expression xsi:type="Combinator">
               <Combinator xsi:type="mx:AnalogOutput">
                 <mx:SignalSource />
-                <mx:SampleRate>150000</mx:SampleRate>
+                <mx:SampleRate>250000</mx:SampleRate>
                 <mx:ActiveEdge>Rising</mx:ActiveEdge>
                 <mx:SampleMode>FiniteSamples</mx:SampleMode>
-                <mx:BufferSize>7500</mx:BufferSize>
+                <mx:BufferSize>15000</mx:BufferSize>
                 <mx:Channels>
                   <mx:AnalogOutputChannelConfiguration>
                     <mx:ChannelName />
@@ -3543,10 +3611,10 @@ def process(value):
             </Expression>
             <Expression xsi:type="Combinator">
               <Combinator xsi:type="dsp:FunctionGenerator">
-                <dsp:BufferLength>30000</dsp:BufferLength>
+                <dsp:BufferLength>60000</dsp:BufferLength>
                 <dsp:Frequency>32000</dsp:Frequency>
                 <dsp:Waveform>Sine</dsp:Waveform>
-                <dsp:SampleRate>150000</dsp:SampleRate>
+                <dsp:SampleRate>250000</dsp:SampleRate>
                 <dsp:Amplitude>0.115</dsp:Amplitude>
                 <dsp:Offset>0</dsp:Offset>
                 <dsp:Phase>0</dsp:Phase>
@@ -3555,10 +3623,10 @@ def process(value):
             <Expression xsi:type="Combinator">
               <Combinator xsi:type="mx:AnalogOutput">
                 <mx:SignalSource />
-                <mx:SampleRate>150000</mx:SampleRate>
+                <mx:SampleRate>250000</mx:SampleRate>
                 <mx:ActiveEdge>Rising</mx:ActiveEdge>
                 <mx:SampleMode>FiniteSamples</mx:SampleMode>
-                <mx:BufferSize>7500</mx:BufferSize>
+                <mx:BufferSize>15000</mx:BufferSize>
                 <mx:Channels>
                   <mx:AnalogOutputChannelConfiguration>
                     <mx:ChannelName />
@@ -3577,10 +3645,10 @@ def process(value):
             </Expression>
             <Expression xsi:type="Combinator">
               <Combinator xsi:type="dsp:FunctionGenerator">
-                <dsp:BufferLength>30000</dsp:BufferLength>
+                <dsp:BufferLength>60000</dsp:BufferLength>
                 <dsp:Frequency>64000</dsp:Frequency>
                 <dsp:Waveform>Sine</dsp:Waveform>
-                <dsp:SampleRate>150000</dsp:SampleRate>
+                <dsp:SampleRate>250000</dsp:SampleRate>
                 <dsp:Amplitude>1.12</dsp:Amplitude>
                 <dsp:Offset>0</dsp:Offset>
                 <dsp:Phase>0</dsp:Phase>
@@ -3589,10 +3657,10 @@ def process(value):
             <Expression xsi:type="Combinator">
               <Combinator xsi:type="mx:AnalogOutput">
                 <mx:SignalSource />
-                <mx:SampleRate>150000</mx:SampleRate>
+                <mx:SampleRate>250000</mx:SampleRate>
                 <mx:ActiveEdge>Rising</mx:ActiveEdge>
                 <mx:SampleMode>FiniteSamples</mx:SampleMode>
-                <mx:BufferSize>7500</mx:BufferSize>
+                <mx:BufferSize>15000</mx:BufferSize>
                 <mx:Channels>
                   <mx:AnalogOutputChannelConfiguration>
                     <mx:ChannelName />
@@ -3831,6 +3899,7 @@ def process(value):
       <Edge From="34" To="35" Label="Source1" />
       <Edge From="35" To="36" Label="Source2" />
       <Edge From="36" To="37" Label="Source1" />
+      <Edge From="37" To="38" Label="Source1" />
     </Edges>
   </Workflow>
 </WorkflowBuilder>

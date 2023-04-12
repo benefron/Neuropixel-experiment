@@ -44,10 +44,10 @@ BasicStepperDriver stepper(MOTOR_STEPS, DIR, STEP,SLEEP);
 int whiskPos; // create variable for the linear movement to whisker position
 int stepperAngle = 0; // create variable for the object stepper angle
 // define the position of the objects on the wheel
-int al_1 = 0 * 33;
+int al_1 = 3 * 33;
 int at_1 = 2 * 33;
 int no_1 = 1 * 33;
-int obj_4 = 3 * 33;
+int obj_4 = 0 * 33;
 
 
 
