@@ -150,9 +150,10 @@ void loop() {
         {
            
 
-          Serial.println("aluminum");
+          Serial.println("endT");
           delay(10);
           stepper.move(al_1*MICROSTEPS-stepperAngle);
+          Serial.println("aluminum");
           //delay(75);
           //stepper.move(al_1*MICROSTEPS);       
           stepperAngle = al_1*MICROSTEPS;
@@ -165,9 +166,10 @@ void loop() {
     
         if (ch == 'm'|| ch == 's')
         {
-          Serial.println("aluminum silenced");
+          Serial.println("endT");
           delay(10);
           stepper.move(at_1*MICROSTEPS-stepperAngle);
+          Serial.println("aluminum silenced");
           //delay(100);
           //stepper.move(at_1*MICROSTEPS);   
           stepperAngle = at_1*MICROSTEPS;
@@ -185,9 +187,10 @@ void loop() {
         if (ch == 'n' || ch == 'e')
         {
             
-          Serial.println("non");
+          Serial.println("endT");
           delay(10);
           stepper.move(no_1*MICROSTEPS-stepperAngle);
+          Serial.println("non");
           //delay(100);
           //stepper.move(no_1*MICROSTEPS);   
           stepperAngle = no_1*MICROSTEPS;
