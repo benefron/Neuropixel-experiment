@@ -3442,7 +3442,7 @@ def process(value):
             <Expression xsi:type="Combinator">
               <Combinator xsi:type="dsp:FunctionGenerator">
                 <dsp:BufferLength>60000</dsp:BufferLength>
-                <dsp:Frequency>100</dsp:Frequency>
+                <dsp:Frequency>500</dsp:Frequency>
                 <dsp:Waveform>Sine</dsp:Waveform>
                 <dsp:SampleRate>250000</dsp:SampleRate>
                 <dsp:Amplitude>0.008</dsp:Amplitude>
@@ -3456,7 +3456,7 @@ def process(value):
                 <mx:SampleRate>250000</mx:SampleRate>
                 <mx:ActiveEdge>Rising</mx:ActiveEdge>
                 <mx:SampleMode>FiniteSamples</mx:SampleMode>
-                <mx:BufferSize>7500</mx:BufferSize>
+                <mx:BufferSize>15000</mx:BufferSize>
                 <mx:Channels>
                   <mx:AnalogOutputChannelConfiguration>
                     <mx:ChannelName />
@@ -3547,7 +3547,7 @@ def process(value):
                 <dsp:Frequency>8000</dsp:Frequency>
                 <dsp:Waveform>Sine</dsp:Waveform>
                 <dsp:SampleRate>250000</dsp:SampleRate>
-                <dsp:Amplitude>0.02</dsp:Amplitude>
+                <dsp:Amplitude>0.012</dsp:Amplitude>
                 <dsp:Offset>0</dsp:Offset>
                 <dsp:Phase>0</dsp:Phase>
               </Combinator>
@@ -3581,7 +3581,7 @@ def process(value):
                 <dsp:Frequency>16000</dsp:Frequency>
                 <dsp:Waveform>Sine</dsp:Waveform>
                 <dsp:SampleRate>250000</dsp:SampleRate>
-                <dsp:Amplitude>0.0115</dsp:Amplitude>
+                <dsp:Amplitude>0.028</dsp:Amplitude>
                 <dsp:Offset>0</dsp:Offset>
                 <dsp:Phase>0</dsp:Phase>
               </Combinator>
@@ -3615,7 +3615,7 @@ def process(value):
                 <dsp:Frequency>32000</dsp:Frequency>
                 <dsp:Waveform>Sine</dsp:Waveform>
                 <dsp:SampleRate>250000</dsp:SampleRate>
-                <dsp:Amplitude>0.115</dsp:Amplitude>
+                <dsp:Amplitude>0.0415</dsp:Amplitude>
                 <dsp:Offset>0</dsp:Offset>
                 <dsp:Phase>0</dsp:Phase>
               </Combinator>
@@ -3649,7 +3649,7 @@ def process(value):
                 <dsp:Frequency>64000</dsp:Frequency>
                 <dsp:Waveform>Sine</dsp:Waveform>
                 <dsp:SampleRate>250000</dsp:SampleRate>
-                <dsp:Amplitude>1.12</dsp:Amplitude>
+                <dsp:Amplitude>0.25</dsp:Amplitude>
                 <dsp:Offset>0</dsp:Offset>
                 <dsp:Phase>0</dsp:Phase>
               </Combinator>
