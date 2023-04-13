@@ -259,7 +259,7 @@
             </Expression>
             <Expression xsi:type="Equal">
               <Operand xsi:type="IntProperty">
-                <Value>3</Value>
+                <Value>10</Value>
               </Operand>
             </Expression>
             <Expression xsi:type="rx:Condition">
@@ -296,7 +296,7 @@
             </Expression>
             <Expression xsi:type="Combinator">
               <Combinator xsi:type="rx:Delay">
-                <rx:DueTime>PT2S</rx:DueTime>
+                <rx:DueTime>PT1S</rx:DueTime>
               </Combinator>
             </Expression>
             <Expression xsi:type="rx:Condition">
@@ -330,7 +330,7 @@
             </Expression>
             <Expression xsi:type="Combinator">
               <Combinator xsi:type="rx:Delay">
-                <rx:DueTime>PT1S</rx:DueTime>
+                <rx:DueTime>PT0.2S</rx:DueTime>
               </Combinator>
             </Expression>
             <Expression xsi:type="rx:BehaviorSubject">
@@ -362,6 +362,17 @@
             <Expression xsi:type="rx:BehaviorSubject">
               <Name>above30</Name>
             </Expression>
+            <Expression xsi:type="SubscribeSubject">
+              <Name>End Exp</Name>
+            </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="BooleanProperty">
+                <Value>false</Value>
+              </Combinator>
+            </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="rx:Merge" />
+            </Expression>
             <Expression xsi:type="Combinator">
               <Combinator xsi:type="rx:TakeUntil" />
             </Expression>
@@ -370,7 +381,7 @@
           <Edges>
             <Edge From="0" To="1" Label="Source1" />
             <Edge From="1" To="2" Label="Source1" />
-            <Edge From="2" To="21" Label="Source2" />
+            <Edge From="2" To="23" Label="Source1" />
             <Edge From="3" To="4" Label="Source1" />
             <Edge From="4" To="15" Label="Source2" />
             <Edge From="5" To="6" Label="Source1" />
@@ -388,8 +399,11 @@
             <Edge From="17" To="18" Label="Source1" />
             <Edge From="18" To="19" Label="Source1" />
             <Edge From="19" To="20" Label="Source1" />
-            <Edge From="20" To="21" Label="Source1" />
+            <Edge From="20" To="24" Label="Source1" />
             <Edge From="21" To="22" Label="Source1" />
+            <Edge From="22" To="23" Label="Source2" />
+            <Edge From="23" To="24" Label="Source2" />
+            <Edge From="24" To="25" Label="Source1" />
           </Edges>
         </Workflow>
       </Expression>
@@ -402,7 +416,7 @@
             </Expression>
             <Expression xsi:type="Equal">
               <Operand xsi:type="IntProperty">
-                <Value>30</Value>
+                <Value>10</Value>
               </Operand>
             </Expression>
             <Expression xsi:type="rx:Condition">
@@ -423,7 +437,7 @@
             </Expression>
             <Expression xsi:type="Combinator">
               <Combinator xsi:type="rx:Delay">
-                <rx:DueTime>PT2S</rx:DueTime>
+                <rx:DueTime>PT1S</rx:DueTime>
               </Combinator>
             </Expression>
             <Expression xsi:type="rx:Condition">
@@ -473,7 +487,7 @@
             </Expression>
             <Expression xsi:type="Combinator">
               <Combinator xsi:type="rx:Delay">
-                <rx:DueTime>PT1S</rx:DueTime>
+                <rx:DueTime>PT0.2S</rx:DueTime>
               </Combinator>
             </Expression>
             <Expression xsi:type="MulticastSubject">
@@ -505,6 +519,17 @@
             <Expression xsi:type="rx:BehaviorSubject">
               <Name>above30No</Name>
             </Expression>
+            <Expression xsi:type="SubscribeSubject">
+              <Name>End Exp</Name>
+            </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="BooleanProperty">
+                <Value>false</Value>
+              </Combinator>
+            </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="rx:Merge" />
+            </Expression>
             <Expression xsi:type="Combinator">
               <Combinator xsi:type="rx:TakeUntil" />
             </Expression>
@@ -513,7 +538,7 @@
           <Edges>
             <Edge From="0" To="1" Label="Source1" />
             <Edge From="1" To="2" Label="Source1" />
-            <Edge From="2" To="21" Label="Source2" />
+            <Edge From="2" To="23" Label="Source1" />
             <Edge From="3" To="4" Label="Source1" />
             <Edge From="4" To="5" Label="Source1" />
             <Edge From="5" To="16" Label="Source2" />
@@ -531,8 +556,11 @@
             <Edge From="17" To="18" Label="Source1" />
             <Edge From="18" To="19" Label="Source1" />
             <Edge From="19" To="20" Label="Source1" />
-            <Edge From="20" To="21" Label="Source1" />
+            <Edge From="20" To="24" Label="Source1" />
             <Edge From="21" To="22" Label="Source1" />
+            <Edge From="22" To="23" Label="Source2" />
+            <Edge From="23" To="24" Label="Source2" />
+            <Edge From="24" To="25" Label="Source1" />
           </Edges>
         </Workflow>
       </Expression>
@@ -570,7 +598,7 @@
             </Expression>
             <Expression xsi:type="Combinator">
               <Combinator xsi:type="rx:Delay">
-                <rx:DueTime>PT2S</rx:DueTime>
+                <rx:DueTime>PT1S</rx:DueTime>
               </Combinator>
             </Expression>
             <Expression xsi:type="BitwiseNot" />
@@ -590,58 +618,12 @@ def process(value):
                     <Combinator xsi:type="rx:DefaultScheduler" />
                   </Expression>
                   <Expression xsi:type="Combinator">
-                    <Combinator xsi:type="rx:Delay">
-                      <rx:DueTime>PT1S</rx:DueTime>
+                    <Combinator xsi:type="BooleanProperty">
+                      <Value>true</Value>
                     </Combinator>
                   </Expression>
-                  <Expression xsi:type="rx:SelectMany">
-                    <Name>reset motor</Name>
-                    <Workflow>
-                      <Nodes>
-                        <Expression xsi:type="WorkflowInput">
-                          <Name>Source1</Name>
-                        </Expression>
-                        <Expression xsi:type="SubscribeSubject">
-                          <Name>At_start</Name>
-                        </Expression>
-                        <Expression xsi:type="rx:Condition">
-                          <Workflow>
-                            <Nodes>
-                              <Expression xsi:type="WorkflowInput">
-                                <Name>Source1</Name>
-                              </Expression>
-                              <Expression xsi:type="WorkflowOutput" />
-                            </Nodes>
-                            <Edges>
-                              <Edge From="0" To="1" Label="Source1" />
-                            </Edges>
-                          </Workflow>
-                        </Expression>
-                        <Expression xsi:type="Combinator">
-                          <Combinator xsi:type="rx:Sample" />
-                        </Expression>
-                        <Expression xsi:type="WorkflowOutput" />
-                        <Expression xsi:type="Combinator">
-                          <Combinator xsi:type="StringProperty">
-                            <Value>b</Value>
-                          </Combinator>
-                        </Expression>
-                        <Expression xsi:type="Combinator">
-                          <Combinator xsi:type="io:SerialStringWrite">
-                            <io:PortName>COM15</io:PortName>
-                            <io:NewLine>\r\n</io:NewLine>
-                          </Combinator>
-                        </Expression>
-                      </Nodes>
-                      <Edges>
-                        <Edge From="0" To="3" Label="Source1" />
-                        <Edge From="0" To="5" Label="Source1" />
-                        <Edge From="1" To="2" Label="Source1" />
-                        <Edge From="2" To="3" Label="Source2" />
-                        <Edge From="3" To="4" Label="Source1" />
-                        <Edge From="5" To="6" Label="Source1" />
-                      </Edges>
-                    </Workflow>
+                  <Expression xsi:type="rx:BehaviorSubject">
+                    <Name>soundOff</Name>
                   </Expression>
                   <Expression xsi:type="Combinator">
                     <Combinator xsi:type="num:CreateRandom">
@@ -859,55 +841,6 @@ def process(value):
                       </Edges>
                     </Workflow>
                   </Expression>
-                  <Expression xsi:type="rx:SelectMany">
-                    <Name>Motor fwd</Name>
-                    <Workflow>
-                      <Nodes>
-                        <Expression xsi:type="WorkflowInput">
-                          <Name>Source1</Name>
-                        </Expression>
-                        <Expression xsi:type="SubscribeSubject">
-                          <Name>At_whiskers</Name>
-                        </Expression>
-                        <Expression xsi:type="rx:Condition">
-                          <Workflow>
-                            <Nodes>
-                              <Expression xsi:type="WorkflowInput">
-                                <Name>Source1</Name>
-                              </Expression>
-                              <Expression xsi:type="WorkflowOutput" />
-                            </Nodes>
-                            <Edges>
-                              <Edge From="0" To="1" Label="Source1" />
-                            </Edges>
-                          </Workflow>
-                        </Expression>
-                        <Expression xsi:type="Combinator">
-                          <Combinator xsi:type="rx:Sample" />
-                        </Expression>
-                        <Expression xsi:type="WorkflowOutput" />
-                        <Expression xsi:type="Combinator">
-                          <Combinator xsi:type="StringProperty">
-                            <Value>f</Value>
-                          </Combinator>
-                        </Expression>
-                        <Expression xsi:type="Combinator">
-                          <Combinator xsi:type="io:SerialStringWrite">
-                            <io:PortName>COM15</io:PortName>
-                            <io:NewLine>\r\n</io:NewLine>
-                          </Combinator>
-                        </Expression>
-                      </Nodes>
-                      <Edges>
-                        <Edge From="0" To="3" Label="Source1" />
-                        <Edge From="0" To="5" Label="Source1" />
-                        <Edge From="1" To="2" Label="Source1" />
-                        <Edge From="2" To="3" Label="Source2" />
-                        <Edge From="3" To="4" Label="Source1" />
-                        <Edge From="5" To="6" Label="Source1" />
-                      </Edges>
-                    </Workflow>
-                  </Expression>
                   <Expression xsi:type="rx:BehaviorSubject">
                     <Name>sound</Name>
                   </Expression>
@@ -921,57 +854,8 @@ def process(value):
                       <Value>true</Value>
                     </Combinator>
                   </Expression>
-                  <Expression xsi:type="rx:BehaviorSubject">
+                  <Expression xsi:type="MulticastSubject">
                     <Name>soundOff</Name>
-                  </Expression>
-                  <Expression xsi:type="rx:SelectMany">
-                    <Name>reset motor</Name>
-                    <Workflow>
-                      <Nodes>
-                        <Expression xsi:type="WorkflowInput">
-                          <Name>Source1</Name>
-                        </Expression>
-                        <Expression xsi:type="SubscribeSubject">
-                          <Name>At_start</Name>
-                        </Expression>
-                        <Expression xsi:type="rx:Condition">
-                          <Workflow>
-                            <Nodes>
-                              <Expression xsi:type="WorkflowInput">
-                                <Name>Source1</Name>
-                              </Expression>
-                              <Expression xsi:type="WorkflowOutput" />
-                            </Nodes>
-                            <Edges>
-                              <Edge From="0" To="1" Label="Source1" />
-                            </Edges>
-                          </Workflow>
-                        </Expression>
-                        <Expression xsi:type="Combinator">
-                          <Combinator xsi:type="rx:Sample" />
-                        </Expression>
-                        <Expression xsi:type="WorkflowOutput" />
-                        <Expression xsi:type="Combinator">
-                          <Combinator xsi:type="StringProperty">
-                            <Value>b</Value>
-                          </Combinator>
-                        </Expression>
-                        <Expression xsi:type="Combinator">
-                          <Combinator xsi:type="io:SerialStringWrite">
-                            <io:PortName>COM15</io:PortName>
-                            <io:NewLine>\r\n</io:NewLine>
-                          </Combinator>
-                        </Expression>
-                      </Nodes>
-                      <Edges>
-                        <Edge From="0" To="3" Label="Source1" />
-                        <Edge From="0" To="5" Label="Source1" />
-                        <Edge From="1" To="2" Label="Source1" />
-                        <Edge From="2" To="3" Label="Source2" />
-                        <Edge From="3" To="4" Label="Source1" />
-                        <Edge From="5" To="6" Label="Source1" />
-                      </Edges>
-                    </Workflow>
                   </Expression>
                   <Expression xsi:type="WorkflowOutput" />
                   <Expression xsi:type="SubscribeSubject">
@@ -1040,15 +924,13 @@ def process(value):
                   <Edge From="10" To="11" Label="Source1" />
                   <Edge From="11" To="12" Label="Source1" />
                   <Edge From="12" To="13" Label="Source1" />
-                  <Edge From="13" To="14" Label="Source1" />
                   <Edge From="14" To="15" Label="Source1" />
+                  <Edge From="14" To="18" Label="Source1" />
+                  <Edge From="15" To="16" Label="Source1" />
                   <Edge From="16" To="17" Label="Source1" />
-                  <Edge From="16" To="20" Label="Source1" />
-                  <Edge From="17" To="18" Label="Source1" />
                   <Edge From="18" To="19" Label="Source1" />
-                  <Edge From="20" To="21" Label="Source1" />
+                  <Edge From="19" To="20" Label="Source1" />
                   <Edge From="21" To="22" Label="Source1" />
-                  <Edge From="23" To="24" Label="Source1" />
                 </Edges>
               </Workflow>
             </Expression>
@@ -1060,7 +942,7 @@ def process(value):
             </Expression>
             <Expression xsi:type="Equal">
               <Operand xsi:type="IntProperty">
-                <Value>3</Value>
+                <Value>10</Value>
               </Operand>
             </Expression>
             <Expression xsi:type="ipy:PythonTransform">
@@ -1153,7 +1035,7 @@ def process(value):
             </Expression>
             <Expression xsi:type="Combinator">
               <Combinator xsi:type="rx:Delay">
-                <rx:DueTime>PT2S</rx:DueTime>
+                <rx:DueTime>PT1S</rx:DueTime>
               </Combinator>
             </Expression>
             <Expression xsi:type="ipy:PythonTransform">
@@ -1166,7 +1048,7 @@ def process(value):
             </Expression>
             <Expression xsi:type="Equal">
               <Operand xsi:type="IntProperty">
-                <Value>3</Value>
+                <Value>10</Value>
               </Operand>
             </Expression>
             <Expression xsi:type="ipy:PythonTransform">
@@ -1207,58 +1089,17 @@ def process(value):
                     <Combinator xsi:type="rx:DefaultScheduler" />
                   </Expression>
                   <Expression xsi:type="Combinator">
-                    <Combinator xsi:type="rx:Delay">
-                      <rx:DueTime>PT1S</rx:DueTime>
+                    <Combinator xsi:type="BooleanProperty">
+                      <Value>true</Value>
                     </Combinator>
                   </Expression>
-                  <Expression xsi:type="rx:SelectMany">
-                    <Name>reset motor</Name>
-                    <Workflow>
-                      <Nodes>
-                        <Expression xsi:type="WorkflowInput">
-                          <Name>Source1</Name>
-                        </Expression>
-                        <Expression xsi:type="SubscribeSubject">
-                          <Name>At_start</Name>
-                        </Expression>
-                        <Expression xsi:type="rx:Condition">
-                          <Workflow>
-                            <Nodes>
-                              <Expression xsi:type="WorkflowInput">
-                                <Name>Source1</Name>
-                              </Expression>
-                              <Expression xsi:type="WorkflowOutput" />
-                            </Nodes>
-                            <Edges>
-                              <Edge From="0" To="1" Label="Source1" />
-                            </Edges>
-                          </Workflow>
-                        </Expression>
-                        <Expression xsi:type="Combinator">
-                          <Combinator xsi:type="rx:Sample" />
-                        </Expression>
-                        <Expression xsi:type="WorkflowOutput" />
-                        <Expression xsi:type="Combinator">
-                          <Combinator xsi:type="StringProperty">
-                            <Value>b</Value>
-                          </Combinator>
-                        </Expression>
-                        <Expression xsi:type="Combinator">
-                          <Combinator xsi:type="io:SerialStringWrite">
-                            <io:PortName>COM15</io:PortName>
-                            <io:NewLine>\r\n</io:NewLine>
-                          </Combinator>
-                        </Expression>
-                      </Nodes>
-                      <Edges>
-                        <Edge From="0" To="3" Label="Source1" />
-                        <Edge From="0" To="5" Label="Source1" />
-                        <Edge From="1" To="2" Label="Source1" />
-                        <Edge From="2" To="3" Label="Source2" />
-                        <Edge From="3" To="4" Label="Source1" />
-                        <Edge From="5" To="6" Label="Source1" />
-                      </Edges>
-                    </Workflow>
+                  <Expression xsi:type="rx:BehaviorSubject">
+                    <Name>soundOff</Name>
+                  </Expression>
+                  <Expression xsi:type="Combinator">
+                    <Combinator xsi:type="rx:Delay">
+                      <rx:DueTime>PT5S</rx:DueTime>
+                    </Combinator>
                   </Expression>
                   <Expression xsi:type="Combinator">
                     <Combinator xsi:type="num:CreateRandom">
@@ -1476,55 +1317,6 @@ def process(value):
                       </Edges>
                     </Workflow>
                   </Expression>
-                  <Expression xsi:type="rx:SelectMany">
-                    <Name>Motor fwd</Name>
-                    <Workflow>
-                      <Nodes>
-                        <Expression xsi:type="WorkflowInput">
-                          <Name>Source1</Name>
-                        </Expression>
-                        <Expression xsi:type="SubscribeSubject">
-                          <Name>At_whiskers</Name>
-                        </Expression>
-                        <Expression xsi:type="rx:Condition">
-                          <Workflow>
-                            <Nodes>
-                              <Expression xsi:type="WorkflowInput">
-                                <Name>Source1</Name>
-                              </Expression>
-                              <Expression xsi:type="WorkflowOutput" />
-                            </Nodes>
-                            <Edges>
-                              <Edge From="0" To="1" Label="Source1" />
-                            </Edges>
-                          </Workflow>
-                        </Expression>
-                        <Expression xsi:type="Combinator">
-                          <Combinator xsi:type="rx:Sample" />
-                        </Expression>
-                        <Expression xsi:type="WorkflowOutput" />
-                        <Expression xsi:type="Combinator">
-                          <Combinator xsi:type="StringProperty">
-                            <Value>f</Value>
-                          </Combinator>
-                        </Expression>
-                        <Expression xsi:type="Combinator">
-                          <Combinator xsi:type="io:SerialStringWrite">
-                            <io:PortName>COM15</io:PortName>
-                            <io:NewLine>\r\n</io:NewLine>
-                          </Combinator>
-                        </Expression>
-                      </Nodes>
-                      <Edges>
-                        <Edge From="0" To="3" Label="Source1" />
-                        <Edge From="0" To="5" Label="Source1" />
-                        <Edge From="1" To="2" Label="Source1" />
-                        <Edge From="2" To="3" Label="Source2" />
-                        <Edge From="3" To="4" Label="Source1" />
-                        <Edge From="5" To="6" Label="Source1" />
-                      </Edges>
-                    </Workflow>
-                  </Expression>
                   <Expression xsi:type="rx:BehaviorSubject">
                     <Name>sound</Name>
                   </Expression>
@@ -1538,57 +1330,8 @@ def process(value):
                       <Value>true</Value>
                     </Combinator>
                   </Expression>
-                  <Expression xsi:type="rx:BehaviorSubject">
+                  <Expression xsi:type="MulticastSubject">
                     <Name>soundOff</Name>
-                  </Expression>
-                  <Expression xsi:type="rx:SelectMany">
-                    <Name>reset motor</Name>
-                    <Workflow>
-                      <Nodes>
-                        <Expression xsi:type="WorkflowInput">
-                          <Name>Source1</Name>
-                        </Expression>
-                        <Expression xsi:type="SubscribeSubject">
-                          <Name>At_start</Name>
-                        </Expression>
-                        <Expression xsi:type="rx:Condition">
-                          <Workflow>
-                            <Nodes>
-                              <Expression xsi:type="WorkflowInput">
-                                <Name>Source1</Name>
-                              </Expression>
-                              <Expression xsi:type="WorkflowOutput" />
-                            </Nodes>
-                            <Edges>
-                              <Edge From="0" To="1" Label="Source1" />
-                            </Edges>
-                          </Workflow>
-                        </Expression>
-                        <Expression xsi:type="Combinator">
-                          <Combinator xsi:type="rx:Sample" />
-                        </Expression>
-                        <Expression xsi:type="WorkflowOutput" />
-                        <Expression xsi:type="Combinator">
-                          <Combinator xsi:type="StringProperty">
-                            <Value>b</Value>
-                          </Combinator>
-                        </Expression>
-                        <Expression xsi:type="Combinator">
-                          <Combinator xsi:type="io:SerialStringWrite">
-                            <io:PortName>COM15</io:PortName>
-                            <io:NewLine>\r\n</io:NewLine>
-                          </Combinator>
-                        </Expression>
-                      </Nodes>
-                      <Edges>
-                        <Edge From="0" To="3" Label="Source1" />
-                        <Edge From="0" To="5" Label="Source1" />
-                        <Edge From="1" To="2" Label="Source1" />
-                        <Edge From="2" To="3" Label="Source2" />
-                        <Edge From="3" To="4" Label="Source1" />
-                        <Edge From="5" To="6" Label="Source1" />
-                      </Edges>
-                    </Workflow>
                   </Expression>
                   <Expression xsi:type="WorkflowOutput" />
                   <Expression xsi:type="SubscribeSubject">
@@ -1658,14 +1401,13 @@ def process(value):
                   <Edge From="11" To="12" Label="Source1" />
                   <Edge From="12" To="13" Label="Source1" />
                   <Edge From="13" To="14" Label="Source1" />
-                  <Edge From="14" To="15" Label="Source1" />
+                  <Edge From="15" To="16" Label="Source1" />
+                  <Edge From="15" To="19" Label="Source1" />
                   <Edge From="16" To="17" Label="Source1" />
-                  <Edge From="16" To="20" Label="Source1" />
                   <Edge From="17" To="18" Label="Source1" />
-                  <Edge From="18" To="19" Label="Source1" />
+                  <Edge From="19" To="20" Label="Source1" />
                   <Edge From="20" To="21" Label="Source1" />
-                  <Edge From="21" To="22" Label="Source1" />
-                  <Edge From="23" To="24" Label="Source1" />
+                  <Edge From="22" To="23" Label="Source1" />
                 </Edges>
               </Workflow>
             </Expression>
@@ -1755,7 +1497,7 @@ def process(value):
             </Expression>
             <Expression xsi:type="Equal">
               <Operand xsi:type="StringProperty">
-                <Value>obj4</Value>
+                <Value>Evoked</Value>
               </Operand>
             </Expression>
             <Expression xsi:type="Combinator">
@@ -2495,67 +2237,69 @@ def process(value):
       <Expression xsi:type="rx:BehaviorSubject">
         <Name>Start Recording</Name>
       </Expression>
-      <Expression xsi:type="rx:SelectMany">
-        <Name>reset motor</Name>
-        <Workflow>
-          <Nodes>
-            <Expression xsi:type="WorkflowInput">
-              <Name>Source1</Name>
-            </Expression>
-            <Expression xsi:type="SubscribeSubject">
-              <Name>At_start</Name>
-            </Expression>
-            <Expression xsi:type="rx:Condition">
-              <Workflow>
-                <Nodes>
-                  <Expression xsi:type="WorkflowInput">
-                    <Name>Source1</Name>
-                  </Expression>
-                  <Expression xsi:type="WorkflowOutput" />
-                </Nodes>
-                <Edges>
-                  <Edge From="0" To="1" Label="Source1" />
-                </Edges>
-              </Workflow>
-            </Expression>
-            <Expression xsi:type="Combinator">
-              <Combinator xsi:type="rx:Sample" />
-            </Expression>
-            <Expression xsi:type="WorkflowOutput" />
-            <Expression xsi:type="Combinator">
-              <Combinator xsi:type="StringProperty">
-                <Value>b</Value>
-              </Combinator>
-            </Expression>
-            <Expression xsi:type="Combinator">
-              <Combinator xsi:type="io:SerialStringWrite">
-                <io:PortName>COM15</io:PortName>
-                <io:NewLine>\r\n</io:NewLine>
-              </Combinator>
-            </Expression>
-            <Expression xsi:type="Combinator">
-              <Combinator xsi:type="StringProperty">
-                <Value>o</Value>
-              </Combinator>
-            </Expression>
-            <Expression xsi:type="Combinator">
-              <Combinator xsi:type="io:SerialStringWrite">
-                <io:PortName>COM15</io:PortName>
-                <io:NewLine>\r\n</io:NewLine>
-              </Combinator>
-            </Expression>
-          </Nodes>
-          <Edges>
-            <Edge From="0" To="3" Label="Source1" />
-            <Edge From="0" To="5" Label="Source1" />
-            <Edge From="1" To="2" Label="Source1" />
-            <Edge From="2" To="3" Label="Source2" />
-            <Edge From="3" To="4" Label="Source1" />
-            <Edge From="5" To="6" Label="Source1" />
-            <Edge From="6" To="7" Label="Source1" />
-            <Edge From="7" To="8" Label="Source1" />
-          </Edges>
-        </Workflow>
+      <Expression xsi:type="Disable">
+        <Builder xsi:type="rx:SelectMany">
+          <Name>reset motor</Name>
+          <Workflow>
+            <Nodes>
+              <Expression xsi:type="WorkflowInput">
+                <Name>Source1</Name>
+              </Expression>
+              <Expression xsi:type="SubscribeSubject">
+                <Name>At_start</Name>
+              </Expression>
+              <Expression xsi:type="rx:Condition">
+                <Workflow>
+                  <Nodes>
+                    <Expression xsi:type="WorkflowInput">
+                      <Name>Source1</Name>
+                    </Expression>
+                    <Expression xsi:type="WorkflowOutput" />
+                  </Nodes>
+                  <Edges>
+                    <Edge From="0" To="1" Label="Source1" />
+                  </Edges>
+                </Workflow>
+              </Expression>
+              <Expression xsi:type="Combinator">
+                <Combinator xsi:type="rx:Sample" />
+              </Expression>
+              <Expression xsi:type="WorkflowOutput" />
+              <Expression xsi:type="Combinator">
+                <Combinator xsi:type="StringProperty">
+                  <Value>b</Value>
+                </Combinator>
+              </Expression>
+              <Expression xsi:type="Combinator">
+                <Combinator xsi:type="io:SerialStringWrite">
+                  <io:PortName>COM15</io:PortName>
+                  <io:NewLine>\r\n</io:NewLine>
+                </Combinator>
+              </Expression>
+              <Expression xsi:type="Combinator">
+                <Combinator xsi:type="StringProperty">
+                  <Value>o</Value>
+                </Combinator>
+              </Expression>
+              <Expression xsi:type="Combinator">
+                <Combinator xsi:type="io:SerialStringWrite">
+                  <io:PortName>COM15</io:PortName>
+                  <io:NewLine>\r\n</io:NewLine>
+                </Combinator>
+              </Expression>
+            </Nodes>
+            <Edges>
+              <Edge From="0" To="3" Label="Source1" />
+              <Edge From="0" To="5" Label="Source1" />
+              <Edge From="1" To="2" Label="Source1" />
+              <Edge From="2" To="3" Label="Source2" />
+              <Edge From="3" To="4" Label="Source1" />
+              <Edge From="5" To="6" Label="Source1" />
+              <Edge From="6" To="7" Label="Source1" />
+              <Edge From="7" To="8" Label="Source1" />
+            </Edges>
+          </Workflow>
+        </Builder>
       </Expression>
       <Expression xsi:type="Combinator">
         <Combinator xsi:type="IntProperty">
@@ -2999,54 +2743,56 @@ def process(value):
       <Expression xsi:type="rx:PublishSubject">
         <Name>End Exp</Name>
       </Expression>
-      <Expression xsi:type="rx:SelectMany">
-        <Name>reset motor</Name>
-        <Workflow>
-          <Nodes>
-            <Expression xsi:type="WorkflowInput">
-              <Name>Source1</Name>
-            </Expression>
-            <Expression xsi:type="SubscribeSubject">
-              <Name>At_start</Name>
-            </Expression>
-            <Expression xsi:type="rx:Condition">
-              <Workflow>
-                <Nodes>
-                  <Expression xsi:type="WorkflowInput">
-                    <Name>Source1</Name>
-                  </Expression>
-                  <Expression xsi:type="WorkflowOutput" />
-                </Nodes>
-                <Edges>
-                  <Edge From="0" To="1" Label="Source1" />
-                </Edges>
-              </Workflow>
-            </Expression>
-            <Expression xsi:type="Combinator">
-              <Combinator xsi:type="rx:Sample" />
-            </Expression>
-            <Expression xsi:type="WorkflowOutput" />
-            <Expression xsi:type="Combinator">
-              <Combinator xsi:type="StringProperty">
-                <Value>b</Value>
-              </Combinator>
-            </Expression>
-            <Expression xsi:type="Combinator">
-              <Combinator xsi:type="io:SerialStringWrite">
-                <io:PortName>COM15</io:PortName>
-                <io:NewLine>\r\n</io:NewLine>
-              </Combinator>
-            </Expression>
-          </Nodes>
-          <Edges>
-            <Edge From="0" To="3" Label="Source1" />
-            <Edge From="0" To="5" Label="Source1" />
-            <Edge From="1" To="2" Label="Source1" />
-            <Edge From="2" To="3" Label="Source2" />
-            <Edge From="3" To="4" Label="Source1" />
-            <Edge From="5" To="6" Label="Source1" />
-          </Edges>
-        </Workflow>
+      <Expression xsi:type="Disable">
+        <Builder xsi:type="rx:SelectMany">
+          <Name>reset motor</Name>
+          <Workflow>
+            <Nodes>
+              <Expression xsi:type="WorkflowInput">
+                <Name>Source1</Name>
+              </Expression>
+              <Expression xsi:type="SubscribeSubject">
+                <Name>At_start</Name>
+              </Expression>
+              <Expression xsi:type="rx:Condition">
+                <Workflow>
+                  <Nodes>
+                    <Expression xsi:type="WorkflowInput">
+                      <Name>Source1</Name>
+                    </Expression>
+                    <Expression xsi:type="WorkflowOutput" />
+                  </Nodes>
+                  <Edges>
+                    <Edge From="0" To="1" Label="Source1" />
+                  </Edges>
+                </Workflow>
+              </Expression>
+              <Expression xsi:type="Combinator">
+                <Combinator xsi:type="rx:Sample" />
+              </Expression>
+              <Expression xsi:type="WorkflowOutput" />
+              <Expression xsi:type="Combinator">
+                <Combinator xsi:type="StringProperty">
+                  <Value>b</Value>
+                </Combinator>
+              </Expression>
+              <Expression xsi:type="Combinator">
+                <Combinator xsi:type="io:SerialStringWrite">
+                  <io:PortName>COM15</io:PortName>
+                  <io:NewLine>\r\n</io:NewLine>
+                </Combinator>
+              </Expression>
+            </Nodes>
+            <Edges>
+              <Edge From="0" To="3" Label="Source1" />
+              <Edge From="0" To="5" Label="Source1" />
+              <Edge From="1" To="2" Label="Source1" />
+              <Edge From="2" To="3" Label="Source2" />
+              <Edge From="3" To="4" Label="Source1" />
+              <Edge From="5" To="6" Label="Source1" />
+            </Edges>
+          </Workflow>
+        </Builder>
       </Expression>
       <Expression xsi:type="GroupWorkflow">
         <Name>ExpEnd tuning</Name>
@@ -3061,7 +2807,7 @@ def process(value):
                   </Expression>
                   <Expression xsi:type="Equal">
                     <Operand xsi:type="IntProperty">
-                      <Value>30</Value>
+                      <Value>3</Value>
                     </Operand>
                   </Expression>
                   <Expression xsi:type="rx:Condition">
@@ -3098,7 +2844,7 @@ def process(value):
                   </Expression>
                   <Expression xsi:type="Combinator">
                     <Combinator xsi:type="rx:Delay">
-                      <rx:DueTime>PT2S</rx:DueTime>
+                      <rx:DueTime>PT1S</rx:DueTime>
                     </Combinator>
                   </Expression>
                   <Expression xsi:type="rx:Condition">
@@ -3132,7 +2878,7 @@ def process(value):
                   </Expression>
                   <Expression xsi:type="Combinator">
                     <Combinator xsi:type="rx:Delay">
-                      <rx:DueTime>PT1S</rx:DueTime>
+                      <rx:DueTime>PT0.2S</rx:DueTime>
                     </Combinator>
                   </Expression>
                   <Expression xsi:type="MulticastSubject">
@@ -3197,8 +2943,21 @@ def process(value):
             </Expression>
             <Expression xsi:type="Equal">
               <Operand xsi:type="IntProperty">
-                <Value>30</Value>
+                <Value>2</Value>
               </Operand>
+            </Expression>
+            <Expression xsi:type="rx:Condition">
+              <Workflow>
+                <Nodes>
+                  <Expression xsi:type="WorkflowInput">
+                    <Name>Source1</Name>
+                  </Expression>
+                  <Expression xsi:type="WorkflowOutput" />
+                </Nodes>
+                <Edges>
+                  <Edge From="0" To="1" Label="Source1" />
+                </Edges>
+              </Workflow>
             </Expression>
             <Expression xsi:type="GroupWorkflow">
               <Name>Whisking evoked</Name>
@@ -3209,7 +2968,7 @@ def process(value):
                   </Expression>
                   <Expression xsi:type="Equal">
                     <Operand xsi:type="IntProperty">
-                      <Value>30</Value>
+                      <Value>3</Value>
                     </Operand>
                   </Expression>
                   <Expression xsi:type="rx:Condition">
@@ -3230,7 +2989,7 @@ def process(value):
                   </Expression>
                   <Expression xsi:type="Combinator">
                     <Combinator xsi:type="rx:Delay">
-                      <rx:DueTime>PT2S</rx:DueTime>
+                      <rx:DueTime>PT1S</rx:DueTime>
                     </Combinator>
                   </Expression>
                   <Expression xsi:type="rx:Condition">
@@ -3280,7 +3039,7 @@ def process(value):
                   </Expression>
                   <Expression xsi:type="Combinator">
                     <Combinator xsi:type="rx:Delay">
-                      <rx:DueTime>PT1S</rx:DueTime>
+                      <rx:DueTime>PT0.2S</rx:DueTime>
                     </Combinator>
                   </Expression>
                   <Expression xsi:type="MulticastSubject">
@@ -3345,8 +3104,21 @@ def process(value):
             </Expression>
             <Expression xsi:type="Equal">
               <Operand xsi:type="IntProperty">
-                <Value>30</Value>
+                <Value>2</Value>
               </Operand>
+            </Expression>
+            <Expression xsi:type="rx:Condition">
+              <Workflow>
+                <Nodes>
+                  <Expression xsi:type="WorkflowInput">
+                    <Name>Source1</Name>
+                  </Expression>
+                  <Expression xsi:type="WorkflowOutput" />
+                </Nodes>
+                <Edges>
+                  <Edge From="0" To="1" Label="Source1" />
+                </Edges>
+              </Workflow>
             </Expression>
             <Expression xsi:type="Combinator">
               <Combinator xsi:type="rx:Zip" />
@@ -3357,10 +3129,12 @@ def process(value):
           </Nodes>
           <Edges>
             <Edge From="0" To="1" Label="Source1" />
-            <Edge From="1" To="4" Label="Source1" />
-            <Edge From="2" To="3" Label="Source1" />
-            <Edge From="3" To="4" Label="Source2" />
+            <Edge From="1" To="2" Label="Source1" />
+            <Edge From="2" To="6" Label="Source1" />
+            <Edge From="3" To="4" Label="Source1" />
             <Edge From="4" To="5" Label="Source1" />
+            <Edge From="5" To="6" Label="Source2" />
+            <Edge From="6" To="7" Label="Source1" />
           </Edges>
         </Workflow>
       </Expression>
@@ -3479,7 +3253,7 @@ def process(value):
                 <dsp:Frequency>2000</dsp:Frequency>
                 <dsp:Waveform>Sine</dsp:Waveform>
                 <dsp:SampleRate>250000</dsp:SampleRate>
-                <dsp:Amplitude>0.12</dsp:Amplitude>
+                <dsp:Amplitude>0.15</dsp:Amplitude>
                 <dsp:Offset>0</dsp:Offset>
                 <dsp:Phase>0</dsp:Phase>
               </Combinator>
@@ -3513,7 +3287,7 @@ def process(value):
                 <dsp:Frequency>4000</dsp:Frequency>
                 <dsp:Waveform>Sine</dsp:Waveform>
                 <dsp:SampleRate>250000</dsp:SampleRate>
-                <dsp:Amplitude>0.02</dsp:Amplitude>
+                <dsp:Amplitude>0.025</dsp:Amplitude>
                 <dsp:Offset>0</dsp:Offset>
                 <dsp:Phase>0</dsp:Phase>
               </Combinator>
@@ -3547,7 +3321,7 @@ def process(value):
                 <dsp:Frequency>8000</dsp:Frequency>
                 <dsp:Waveform>Sine</dsp:Waveform>
                 <dsp:SampleRate>250000</dsp:SampleRate>
-                <dsp:Amplitude>0.012</dsp:Amplitude>
+                <dsp:Amplitude>0.015</dsp:Amplitude>
                 <dsp:Offset>0</dsp:Offset>
                 <dsp:Phase>0</dsp:Phase>
               </Combinator>
@@ -3581,7 +3355,7 @@ def process(value):
                 <dsp:Frequency>16000</dsp:Frequency>
                 <dsp:Waveform>Sine</dsp:Waveform>
                 <dsp:SampleRate>250000</dsp:SampleRate>
-                <dsp:Amplitude>0.028</dsp:Amplitude>
+                <dsp:Amplitude>0.016</dsp:Amplitude>
                 <dsp:Offset>0</dsp:Offset>
                 <dsp:Phase>0</dsp:Phase>
               </Combinator>
@@ -3615,7 +3389,7 @@ def process(value):
                 <dsp:Frequency>32000</dsp:Frequency>
                 <dsp:Waveform>Sine</dsp:Waveform>
                 <dsp:SampleRate>250000</dsp:SampleRate>
-                <dsp:Amplitude>0.0415</dsp:Amplitude>
+                <dsp:Amplitude>0.053</dsp:Amplitude>
                 <dsp:Offset>0</dsp:Offset>
                 <dsp:Phase>0</dsp:Phase>
               </Combinator>
@@ -3649,7 +3423,7 @@ def process(value):
                 <dsp:Frequency>64000</dsp:Frequency>
                 <dsp:Waveform>Sine</dsp:Waveform>
                 <dsp:SampleRate>250000</dsp:SampleRate>
-                <dsp:Amplitude>0.25</dsp:Amplitude>
+                <dsp:Amplitude>0.6</dsp:Amplitude>
                 <dsp:Offset>0</dsp:Offset>
                 <dsp:Phase>0</dsp:Phase>
               </Combinator>
@@ -3722,7 +3496,7 @@ def process(value):
                 <dsp:SampleRate>250000</dsp:SampleRate>
                 <dsp:Cutoff1>30000</dsp:Cutoff1>
                 <dsp:Cutoff2>0</dsp:Cutoff2>
-                <dsp:FilterOrder>3</dsp:FilterOrder>
+                <dsp:FilterOrder>5</dsp:FilterOrder>
                 <dsp:FilterType>LowPass</dsp:FilterType>
               </Combinator>
             </Expression>
@@ -3730,8 +3504,8 @@ def process(value):
               <Combinator xsi:type="dsp:Rescale">
                 <dsp:Min>-100000000</dsp:Min>
                 <dsp:Max>100000000</dsp:Max>
-                <dsp:RangeMin>-0.02</dsp:RangeMin>
-                <dsp:RangeMax>0.02</dsp:RangeMax>
+                <dsp:RangeMin>-0.0005</dsp:RangeMin>
+                <dsp:RangeMax>0.0005</dsp:RangeMax>
                 <dsp:RescaleType>Linear</dsp:RescaleType>
               </Combinator>
             </Expression>
@@ -3739,8 +3513,8 @@ def process(value):
               <Combinator xsi:type="dsp:Butterworth">
                 <dsp:SampleRate>250000</dsp:SampleRate>
                 <dsp:Cutoff1>25000</dsp:Cutoff1>
-                <dsp:Cutoff2>50000</dsp:Cutoff2>
-                <dsp:FilterOrder>3</dsp:FilterOrder>
+                <dsp:Cutoff2>60000</dsp:Cutoff2>
+                <dsp:FilterOrder>5</dsp:FilterOrder>
                 <dsp:FilterType>BandPass</dsp:FilterType>
               </Combinator>
             </Expression>
@@ -3748,17 +3522,17 @@ def process(value):
               <Combinator xsi:type="dsp:Rescale">
                 <dsp:Min>-100000000</dsp:Min>
                 <dsp:Max>100000000</dsp:Max>
-                <dsp:RangeMin>-0.6</dsp:RangeMin>
-                <dsp:RangeMax>0.6</dsp:RangeMax>
+                <dsp:RangeMin>-0.003</dsp:RangeMin>
+                <dsp:RangeMax>0.003</dsp:RangeMax>
                 <dsp:RescaleType>Linear</dsp:RescaleType>
               </Combinator>
             </Expression>
             <Expression xsi:type="Combinator">
               <Combinator xsi:type="dsp:Butterworth">
                 <dsp:SampleRate>250000</dsp:SampleRate>
-                <dsp:Cutoff1>45000</dsp:Cutoff1>
+                <dsp:Cutoff1>60000</dsp:Cutoff1>
                 <dsp:Cutoff2>0</dsp:Cutoff2>
-                <dsp:FilterOrder>3</dsp:FilterOrder>
+                <dsp:FilterOrder>5</dsp:FilterOrder>
                 <dsp:FilterType>HighPass</dsp:FilterType>
               </Combinator>
             </Expression>
@@ -3766,8 +3540,8 @@ def process(value):
               <Combinator xsi:type="dsp:Rescale">
                 <dsp:Min>-50000000</dsp:Min>
                 <dsp:Max>50000000</dsp:Max>
-                <dsp:RangeMin>-20</dsp:RangeMin>
-                <dsp:RangeMax>20</dsp:RangeMax>
+                <dsp:RangeMin>-400</dsp:RangeMin>
+                <dsp:RangeMax>400</dsp:RangeMax>
                 <dsp:RescaleType>Linear</dsp:RescaleType>
               </Combinator>
             </Expression>
@@ -3778,7 +3552,7 @@ def process(value):
             <Expression xsi:type="Combinator">
               <Combinator xsi:type="dsp:ConvertScale">
                 <dsp:Depth>F32</dsp:Depth>
-                <dsp:Scale>0.08</dsp:Scale>
+                <dsp:Scale>0.015</dsp:Scale>
                 <dsp:Shift>0</dsp:Shift>
               </Combinator>
             </Expression>
